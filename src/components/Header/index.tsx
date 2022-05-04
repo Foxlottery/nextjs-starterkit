@@ -4,7 +4,7 @@ import { t } from '@lingui/macro'
 import { useLingui } from '@lingui/react'
 import SwitchLanguages from 'app/components/SwitchLanguages'
 import config from 'app/config'
-import translatedConfig from 'app/config/translatedConfig'
+import headerConfig from 'app/config/header'
 import { MenuItem } from 'app/types/MenuItem'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -13,7 +13,7 @@ import React from 'react'
 const Header = () => {
   const router = useRouter()
   const { i18n } = useLingui()
-  const { header } = translatedConfig(i18n)
+  const header = headerConfig(i18n)
   const { serviceIcon, serviceName } = config
 
   return (

@@ -12,7 +12,7 @@ import { DefaultSeo } from 'next-seo'
 import React, { useEffect } from 'react'
 import { Provider as ReduxProvider } from 'react-redux'
 
-import SEO from '../config/seo'
+import defaultSeo from '../config/defaultSeo'
 
 function MyApp({ Component, pageProps }: any) {
   const router = useRouter()
@@ -72,7 +72,7 @@ function MyApp({ Component, pageProps }: any) {
       <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
         <ReduxProvider store={store}>
           <Layout>
-            <DefaultSeo {...SEO} />
+            <DefaultSeo {...defaultSeo} />
             <Component {...pageProps} />
           </Layout>
         </ReduxProvider>
