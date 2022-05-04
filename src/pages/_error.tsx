@@ -3,6 +3,9 @@ import NextErrorComponent from 'next/error'
 
 // @ts-ignore
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
+  if (!process.env.SENTRY_DSN) {
+    return
+  }
   if (!hasGetInitialPropsRun && err) {
     // getInitialProps is not called in case of
     // https://github.com/vercel/next.js/issues/8592. As a workaround, we pass
@@ -16,6 +19,9 @@ const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
 
 // @ts-ignore
 MyError.getInitialProps = async ({ res, err, asPath }) => {
+  if (!process.env.SENTRY_DNS) {
+    return
+  }
   // @ts-ignore
   const errorInitialProps = await NextErrorComponent.getInitialProps({
     res,

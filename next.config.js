@@ -54,10 +54,15 @@ const SentryWebpackPluginOptions = {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 }
+const { SENTRY_DSN } = process.env
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(nextConfig, SentryWebpackPluginOptions)
+if (SENTRY_DSN) {
+  module.exports = withSentryConfig(nextConfig, SentryWebpackPluginOptions)
+} else {
+  module.exports = nextConfig
+}
 
 // Don't delete this console log, useful to see the config in Vercel deployments
 // console.log('next.config.js', JSON.stringify(module.exports, null, 2))
