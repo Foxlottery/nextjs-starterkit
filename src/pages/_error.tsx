@@ -3,7 +3,7 @@ import NextErrorComponent from 'next/error'
 
 // @ts-ignore
 const MyError = ({ statusCode, hasGetInitialPropsRun, err }) => {
-  if (!process.env.SENTRY_DSN) {
+  if (!process.env.NEXT_PUBLIC_SENTRY_DSN) {
     return
   }
   if (!hasGetInitialPropsRun && err) {

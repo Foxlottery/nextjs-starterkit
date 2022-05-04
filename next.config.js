@@ -54,11 +54,11 @@ const SentryWebpackPluginOptions = {
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 }
-const { SENTRY_DSN } = process.env
+const { NEXT_PUBLIC_SENTRY_DSN } = process.env
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
-if (SENTRY_DSN) {
+if (NEXT_PUBLIC_SENTRY_DSN) {
   module.exports = withSentryConfig(nextConfig, SentryWebpackPluginOptions)
 } else {
   module.exports = nextConfig
